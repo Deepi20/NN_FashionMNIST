@@ -1,3 +1,6 @@
+import tensorflow as tf
+import numpy as np
+from tensorflow import keras
 mnist = tf.keras.datasets.fashion_mnist
 (training_images, training_labels),(testing_images,testing_labels) = mnist.load_data()
 import matplotlib.pyplot as plt
@@ -12,3 +15,5 @@ model.compile(optimizer = tf.keras.optimizers.Adam(),
              loss = 'sparse_categorical_crossentropy',
              metrics = ['accuracy'])
 model.fit(training_images,training_labels,epochs = 100)
+
+
