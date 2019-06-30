@@ -15,5 +15,6 @@ model.compile(optimizer = tf.keras.optimizers.Adam(),
              loss = 'sparse_categorical_crossentropy',
              metrics = ['accuracy'])
 model.fit(training_images,training_labels,epochs = 100)
+model.evaluate(testing_images, testing_labels)
 
 
