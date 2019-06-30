@@ -1,2 +1,2 @@
 # NN_FashionMNIST
-A neural network using TensorFlow for predicting unseen images
+A neural network model using TensorFlow for predicting labels in the FashionMNIST dataset
