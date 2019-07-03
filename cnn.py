@@ -10,8 +10,8 @@ training_images = training_images/255.0
 testing_images = testing_images/255.0
 class myCallback(tf.keras.callbacks.Callback):
   def on_epoch_end(self, epoch, logs={}):
-    if(logs.get('accuracy')>0.91):
-      print("\nReached 91% accuracy so cancelling training!")
+    if(logs.get('accuracy')>0.95):
+      print("\nReached 95% accuracy so cancelling training!")
       self.model.stop_training = True
 
         
