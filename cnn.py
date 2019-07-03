@@ -10,8 +10,8 @@ training_images = training_images/255.0
 testing_images = testing_images/255.0
 class myCallback(tf.keras.callbacks.Callback):
   def on_epoch_end(self, epoch, logs={}):
-    if(logs.get('accuracy')>0.95):
-      print("\nReached 95% accuracy so cancelling training!")
+    if(logs.get('accuracy')>0.96):
+      print("\nReached 96% accuracy so cancelling training!")
       self.model.stop_training = True
 
         
@@ -21,6 +21,8 @@ model = tf.keras.models.Sequential([
     tf.keras.layers.Conv2D(16,(3,3),activation ='relu',input_shape = (28,28,1)),
     tf.keras.layers.MaxPooling2D(2,2),
     tf.keras.layers.Conv2D(32,(3,3),activation = 'relu'),
+    tf.keras.layers.MaxPooling2D(2,2),
+    tf.keras.layers.Conv2D(64,(3,3),activation = 'relu'),
     tf.keras.layers.MaxPooling2D(2,2),
     tf.keras.layers.Conv2D(64,(3,3),activation = 'relu'),
     tf.keras.layers.MaxPooling2D(2,2),
