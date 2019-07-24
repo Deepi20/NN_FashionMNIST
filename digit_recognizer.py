@@ -2,6 +2,11 @@ import numpy as np
 import pandas as pd
 train = pd.read_csv("data/train.csv")
 print(train.shape)
+test = pd.read_csv("data/test.csv")
+print(test.shape)
+x_train = train.iloc[:, 1:785].values
+y_train = train.iloc[:, 0].values
+x_test = test.iloc[:, 0:784].values
 from keras.models import Sequential
 from keras.layers import Conv2D
 from keras.layers import MaxPooling2D
