@@ -7,6 +7,15 @@ print(test.shape)
 x_train = train.iloc[:, 1:785].values
 y_train = train.iloc[:, 0].values
 x_test = test.iloc[:, 0:784].values
+print(x_train.shape)
+print(y_train.shape)
+print(x_test.shape)
+x_train = x_train/255.0
+x_test = x_test/255.0
+x_train = x_train.reshape(x_train.shape[0], 28, 28, 1)
+x_test = x_test.reshape(x_test.shape[0], 28, 28, 1)
+print(x_train.shape)
+print(x_test.shape)
 from keras.models import Sequential
 from keras.layers import Conv2D
 from keras.layers import MaxPooling2D
