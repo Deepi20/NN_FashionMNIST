@@ -1,3 +1,7 @@
+import numpy as np
+import pandas as pd
+train = pd.read_csv("data/train.csv")
+print(train.shape)
 from keras.models import Sequential
 from keras.layers import Conv2D
 from keras.layers import MaxPooling2D
@@ -31,3 +35,10 @@ model.add(Dense(512,activation = 'relu'))
 model.add(Dense(512, activation = 'relu'))
 model.add(Dense(num_classes, activation = 'sigmoid'))
 model.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
+model.summary()
+model.fit(x_train, y_train, epochs = epochs, verbose = 1)
+loss , accuracy = model.evaluate(x_validation, y_validation, verbose = 0)
+print("Loss : ",loss, "Accuracy : ", accuracy)
+predicted_classes = model.predict_classes(x_test)
+submissions=pd.DataFrame({"ImageId": list(range(1,len(predicted_classes)+1)), "Label": predicted_classes})
+submissions.to_csv("submission.csv", index = False, header = True)
