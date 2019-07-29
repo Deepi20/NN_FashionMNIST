@@ -97,3 +97,4 @@ for images,labels in valloader:
 
 print("Number Of Images Tested =", all_count)
 print("\nModel Accuracy =", (correct_count/all_count))
+torch.save(model, './my_mnist_model.pt') 
