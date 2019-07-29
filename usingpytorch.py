@@ -69,3 +69,13 @@ for e in range(epochs):
     else:
         print("Epoch {} - Training loss: {}".format(e, running_loss/len(trainloader)))
 print("\nTraining Time (in minutes) =",(time()-time0)/60)
+images, labels = next(iter(valloader))
+
+img = images[0].view(1, 784)
+with torch.no_grad():
+    logps = model(img)
+
+ps = torch.exp(logps)
+probab = list(ps.numpy()[0])
+print("Predicted Digit =", probab.index(max(probab)))
+view_classify(img.view(1, 28, 28), ps)
