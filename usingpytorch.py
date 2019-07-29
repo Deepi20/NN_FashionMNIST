@@ -44,3 +44,28 @@ loss = criterion(logps, labels) #calculate the NLL loss
 print('Before backward pass: \n', model[0].weight.grad)
 loss.backward()
 print('After backward pass: \n', model[0].weight.grad)
+optimizer = optim.SGD(model.parameters(), lr=0.003, momentum=0.9)
+time0 = time()
+epochs = 15
+for e in range(epochs):
+    running_loss = 0
+    for images, labels in trainloader:
+        # Flatten MNIST images into a 784 long vector
+        images = images.view(images.shape[0], -1)
+    
+        # Training pass
+        optimizer.zero_grad()
+        
+        output = model(images)
+        loss = criterion(output, labels)
+        
+        #This is where the model learns by backpropagating
+        loss.backward()
+        
+        #And optimizes its weights here
+        optimizer.step()
+        
+        running_loss += loss.item()
+    else:
+        print("Epoch {} - Training loss: {}".format(e, running_loss/len(trainloader)))
+print("\nTraining Time (in minutes) =",(time()-time0)/60)
