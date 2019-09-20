@@ -10,6 +10,26 @@ transform = transforms.Compose([transforms.ToTensor(),
                               ])
 trainset = datasets.MNIST('PATH_TO_STORE_TRAINSET', download=True, train=True, transform=transform)
 
+valset = datasets.MNIST('PATH_TO_STORE_TESTSET', download=True, train=False, transform=transform)
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=64, shuffle=True)
+valloader = torch.utils.data.DataLoader(valset, batch_size=64, shuffle=True)
+dataiter = iter(trainloader)
+images, labels = dataiter.next()
+
+print(images.shape)
+print(labels.shape)
+plt.imshow(images[0].numpy().squeeze(), cmap='gray_r');
+figure = plt.figure()
+num_of_images = 60
+for index in range(1, num_of_images + 1):
+    plt.subplot(6, 10, index)
+    plt.axis('off')
+    plt.imshow(images[index].numpy().squeeze(), cmap='gray_r')
+input_size = 784
+hidden_sizes = [128, 64]
+output_size = 10
+
+
 
 logps = model(images) #log probabilities
 loss = criterion(logps, labels) #calculate the NLL loss
