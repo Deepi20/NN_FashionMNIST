@@ -1,3 +1,4 @@
+import numpy as np
 
 from torch import nn, optim
 transform = transforms.Compose([transforms.ToTensor(),
