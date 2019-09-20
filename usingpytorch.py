@@ -18,16 +18,13 @@ images, labels = dataiter.next()
 
 print(images.shape)
 print(labels.shape)
-plt.imshow(images[0].numpy().squeeze(), cmap='gray_r');
-figure = plt.figure()
-num_of_images = 60
-for index in range(1, num_of_images + 1):
-    plt.subplot(6, 10, index)
-    plt.axis('off')
-    plt.imshow(images[index].numpy().squeeze(), cmap='gray_r')
-input_size = 784
-hidden_sizes = [128, 64]
-output_size = 10
+
+
+
+
+
+
+
 model = nn.Sequential(nn.Linear(input_size, hidden_sizes[0]),
                       nn.ReLU(),
                       nn.Linear(hidden_sizes[0], hidden_sizes[1]),
